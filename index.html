@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Finder with Lists</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .list-group-item {
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Fruits and Vegetables
+        
+        </h1>
+        <input type="text" id="searchInput" class="form-control" placeholder="Search Text">
+        <br>
+        
+        <div id="searchResults" class="alert alert-primary"></div>
+        <ul id="textList" class="list-group">
+            
+                <li class="list-group-item">Apple</li>
+                <li class="list-group-item">Avocado</li>
+                <li class="list-group-item">Banana</li>
+                <li class="list-group-item">Bell Peppers </li>
+                <li class="list-group-item">Blueberry</li>
+                <li class="list-group-item">Broccoli</li>
+                <li class="list-group-item">Cauliflower</li>
+                <li class="list-group-item">Carrot</li>
+                <li class="list-group-item">Celery</li>
+                <li class="list-group-item">Cherry</li>
+                <li class="list-group-item">Cucumber</li>
+                <li class="list-group-item">Date</li>
+                <li class="list-group-item">Eggplant</li>
+                <li class="list-group-item">Elderberry</li>
+                <li class="list-group-item">Grapes</li>
+                <li class="list-group-item">Green Chili</li>
+                <li class="list-group-item">Okra</li>
+                <li class="list-group-item">Onion</li>
+                <li class="list-group-item">Oranges</li>
+                <li class="list-group-item">Papaya</li>
+                <li class="list-group-item">Pears</li>
+                <li class="list-group-item">Peas</li>
+                <li class="list-group-item">Potatoes</li>
+                <li class="list-group-item">Raspberry</li>
+                <li class="list-group-item">Sweet Potatoes</li>
+           
+            
+            
+        </ul>
+        <br>
+        
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      
+        function findText() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const listItems = document.querySelectorAll('#textList .list-group-item');
+
+            let found = false;
+            listItems.forEach(function(item) {
+                if (item.textContent.toLowerCase().includes(searchInput)) {
+                    item.classList.remove('d-none');
+                    found = true;
+                } else {
+                    item.classList.add('d-none');
+                }
+            });
+
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = found ? `Found: "${searchInput}"` : `Text "${searchInput}" not found in the list.`;
+        }
+
+        
+        document.getElementById('searchInput').addEventListener('keyup', findText);
+    </script>
+</body>
+</html>
